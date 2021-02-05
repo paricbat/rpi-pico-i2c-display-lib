@@ -8,15 +8,15 @@
 #define LCD_COMMAND    0
 
 void i2c_write_byte(uint8_t val);
-void lcd_setAddr(int addr);
+void lcd_setAddr(uint8_t addr);
 void lcd_toggle_enable(uint8_t val);
-void lcd_send_byte(uint8_t val, int mode, int backlight);
+void lcd_send_byte(uint8_t val, uint8_t mode, uint8_t backlight);
 void lcd_clear(void);
-void lcd_setCursor(int line, int position);
+void lcd_setCursor(uint8_t line, uint8_t position);
 static void inline lcd_write(char val);
 void lcd_print(const char *s);
 void lcd_createChar(uint8_t location, uint8_t charmap[]);
-void lcd_init(int sda, int scl);
+void lcd_init(uint8_t sda, uint8_t scl);
 
 void lcd_home();
 

@@ -45,7 +45,7 @@ void i2c_write_byte(uint8_t val) {
     i2c_write_blocking(I2C_PORT, lcd_addr, &val, 1, false);
 }
 
-void lcd_setAddr(int addr)
+void lcd_setAddr(uint8_t addr)
 {
 	lcd_addr = addr;
 }
@@ -62,7 +62,7 @@ void lcd_toggle_enable(uint8_t val) {
 }
 
 // The display is sent a byte as two separate nibble transfers
-void lcd_send_byte(uint8_t val, int mode, int backlight) {
+void lcd_send_byte(uint8_t val, uint8_t mode, uint8_t backlight) {
 	uint8_t high;
 	uint8_t low;
 
@@ -87,9 +87,9 @@ void lcd_clear(void) {
 }
 
 // go to location on LCD
-void lcd_setCursor(int line, int position) {
-    int line_offsets[] = { 0x00, 0x40, 0x14, 0x54 };
-    int val = 0x80 + line_offsets[line] + position;
+void lcd_setCursor(uint8_t line, uint8_t position) {
+    uint8_t line_offsets[] = { 0x00, 0x40, 0x14, 0x54 };
+    uint8_t val = 0x80 + line_offsets[line] + position;
     lcd_send_byte(val, LCD_COMMAND, 1);
 }
 
@@ -113,7 +113,7 @@ void lcd_createChar(uint8_t location, uint8_t charmap[]) {
 
 void lcd_home() {lcd_setCursor(0,0);}
 
-void lcd_init(int sda, int scl) {
+void lcd_init(uint8_t sda, uint8_t scl) {
 	i2c_init(I2C_PORT, 100 * 1000);
     gpio_set_function(sda, GPIO_FUNC_I2C);
     gpio_set_function(scl, GPIO_FUNC_I2C);
