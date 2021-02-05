@@ -9,8 +9,43 @@ There are two ways:
 
 ## Adding the files to CMakeLists.txt
 Here's a step-by-step guide:
-1. Create a folder `include`.
+1. Create a folder `i2c-display-lib` in the folder where your CMakeLists is located.
 1. Put both `i2c-display-lib.c` and `i2c-display-lib.h `into it.
-1. Add this line before the call of add_executable in your CMakeLists.txt file: `include_directories(include/)`
-1. Edit your add_executable line from: `add_executable(yourproj yourproj.c)` to: `add_executable(yourproj yourproj.c include/i2c-display-lib.c include/i2c-display-lib.h)`
+1. Add this line right after the call of `add_executable` in your CMakeLists.txt file: `add_library(i2c-display-lib i2c-display-lib/i2c-display-lib.c)`
+1. Add this line right before the call of `target_link_libraries` for your main project: `target_link_libraries(i2c-display-lib pico_stdlib hardware_i2c)`
+1. Modify your `target_link_libraries` call for your main project from this: `target_link_libraries(yourproject pico_stdlib)` to this: `target_link_libraries(yourproject pico_stdlib i2c-display-lib)`
 1. Done!
+
+CMakeLists.txt should look like this now:
+```
+cmake_minimum_required(VERSION 3.12)
+
+include(pico_sdk_import.cmake)
+project(yourproject)
+pico_sdk_init()
+
+add_executable(yourproject yourproject.c)
+add_library(i2c-display-lib i2c-display-lib/i2c-display-lib.c)
+
+pico_add_extra_outputs(yourprojects)
+
+target_link_libraries(i2c-display-lib pico_stdlib hardware_i2c)
+target_link_libraries(yourproject pico_stdlib i2c-display-lib)
+```
+# An Example
+```
+#include "pico/stdlib.h"
+#include "i2c-display-lib/i2c-display-lib.h"
+
+
+int main() {
+    lcd_set_cols(20);
+    lcd_set_rows(4);
+
+    lcd_backlight();
+    lcd_init();
+
+    lcd_home();
+    lcd_print("Hello World!");
+}
+```
