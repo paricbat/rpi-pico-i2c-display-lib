@@ -97,7 +97,7 @@ static void inline lcd_write(char val) {
     lcd_send_byte(val, LCD_CHARACTER, 1);
 }
 
-static void lcd_print(const char *s) {
+void lcd_print(const char *s) {
     while (*s) {
         lcd_write(*s++);
     }
