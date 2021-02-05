@@ -13,7 +13,7 @@ void lcd_toggle_enable(uint8_t val);
 void lcd_send_byte(uint8_t val, uint8_t mode, uint8_t backlight);
 void lcd_clear(void);
 void lcd_setCursor(uint8_t line, uint8_t position);
-static void inline lcd_write(char val);
+void lcd_write(char val);
 void lcd_print(const char *s);
 void lcd_createChar(uint8_t location, uint8_t charmap[]);
 void lcd_init(uint8_t sda, uint8_t scl);
