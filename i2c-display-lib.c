@@ -27,9 +27,9 @@ void lcd_write4bits(uint8_t value) {
 
 // write either command or data
 void lcd_send(uint8_t value, uint8_t mode) {
-	uint8_t highnib=value & 0xf0;
-	uint8_t lownib=(value<<4) & 0xf0;
-	lcd_write4bits((highnib)|mode);
+	uint8_t highnib=value&0xf0;
+	uint8_t lownib=(value<<4)&0xf0;
+    lcd_write4bits((highnib)|mode);	
 	lcd_write4bits((lownib)|mode);
 }
 
