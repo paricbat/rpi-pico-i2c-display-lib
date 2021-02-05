@@ -126,7 +126,7 @@ void lcd_rightToLeft(void) {
 // This will 'right justify' text from the cursor
 void lcd_autoscroll(void) {
 	lcd_displaymode |= LCD_ENTRYSHIFTINCREMENT;
-	command(LCD_ENTRYMODESET | lcd_displaymode);
+	lcd_command(LCD_ENTRYMODESET | lcd_displaymode);
 }
 
 // This will 'left justify' text from the cursor
