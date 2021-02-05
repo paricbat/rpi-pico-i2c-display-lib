@@ -153,12 +153,12 @@ void lcd_createChar(uint8_t location, uint8_t charmap[]) {
 // Turn the (optional) backlight off/on
 void lcd_noBacklight(void) {
 	lcd_backlightval=LCD_NOBACKLIGHT;
-	lcd_expanderWrite(0);
+	lcd_expanderWrite(lcd_backlightval);
 }
 
 void lcd_backlight(void) {
 	lcd_backlightval=LCD_BACKLIGHT;
-	lcd_expanderWrite(1);
+	lcd_expanderWrite(lcd_backlightval);
 }
 
 // Alias functions
