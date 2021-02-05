@@ -78,6 +78,8 @@ void lcd_createChar(uint8_t location, uint8_t charmap[]) {
 	}
 }
 
+void lcd_home() {lcd_setCursor(0,0);}
+
 void lcd_init(int sda, int scl) {
 	i2c_init(I2C_PORT, 100 * 1000);
     gpio_set_function(sda, GPIO_FUNC_I2C);

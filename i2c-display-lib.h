@@ -47,3 +47,5 @@ static void inline lcd_write(char val);
 void lcd_print(const char *s);
 void lcd_createChar(uint8_t location, uint8_t charmap[]);
 void lcd_init(int sda, int scl);
+
+void lcd_home();
