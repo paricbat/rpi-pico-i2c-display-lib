@@ -55,4 +55,59 @@
 
 #define I2C_PORT i2c0
 
+void lcd_set_cols(uint8_t cols);
+void lcd_set_rows(uint8_t rows);
+
+void lcd_begin(uint8_t cols, uint8_t rows, uint8_t charsize);
+void lcd_clear();
+void lcd_home();
+void lcd_noDisplay();
+void lcd_display();
+void lcd_noBlink();
+void lcd_blink();
+void lcd_noCursor();
+void lcd_cursor();
+void lcd_scrollDisplayLeft();
+void lcd_scrollDisplayRight();
+void lcd_printLeft();
+void lcd_printRight();
+void lcd_leftToRight();
+void lcd_rightToLeft();
+void lcd_shiftIncrement();
+void lcd_shiftDecrement();
+void lcd_noBacklight();
+void lcd_backlight();
+void lcd_autoscroll();
+void lcd_noAutoscroll(); 
+void lcd_createChar(uint8_t location, uint8_t charmap[]);
+ 
+void lcd_setCursor(uint8_t col, uint8_t row); 
+inline void lcd_write(uint8_t value);
+void lcd_command(uint8_t);
+void lcd_init();
+void lcd_oled_init();
+
+////compatibility API function aliases
+void lcd_blink_on();						// alias for blink()
+void lcd_blink_off();       					// alias for noBlink()
+void lcd_cursor_on();      	 					// alias for cursor()
+void lcd_cursor_off();      					// alias for noCursor()
+void lcd_setBacklight(uint8_t new_val);				// alias for backlight() and nobacklight()
+void lcd_load_custom_character(uint8_t char_num, uint8_t *rows);	// alias for createChar()
+void lcd_print(const char* text);
+
+void lcd_send(uint8_t value, uint8_t mode);
+void lcd_write4bits(uint8_t value);
+void lcd_expanderWrite(uint8_t val);
+void lcd_pulseEnable(uint8_t data);
+
+uint8_t lcd_Addr = 0x27;
+uint8_t lcd_displayfunction;
+uint8_t lcd_displaycontrol;
+uint8_t lcd_displaymode;
+uint8_t lcd_numlines = 2;
+uint8_t lcd_cols = 16;
+uint8_t lcd_rows = 2;
+uint8_t lcd_backlightval = LCD_NOBACKLIGHT;
+
 #endif
