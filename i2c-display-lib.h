@@ -101,13 +101,13 @@ void lcd_write4bits(uint8_t value);
 void lcd_expanderWrite(uint8_t val);
 void lcd_pulseEnable(uint8_t data);
 
-uint8_t lcd_Addr = 0x27;
+uint8_t lcd_Addr;
 uint8_t lcd_displayfunction;
 uint8_t lcd_displaycontrol;
 uint8_t lcd_displaymode;
-uint8_t lcd_numlines = 2;
-uint8_t lcd_cols = 16;
-uint8_t lcd_rows = 2;
-uint8_t lcd_backlightval = LCD_NOBACKLIGHT;
+uint8_t lcd_numlines;
+uint8_t lcd_cols;
+uint8_t lcd_rows;
+uint8_t lcd_backlightval;
 
 #endif

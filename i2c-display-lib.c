@@ -1,6 +1,11 @@
 // Original Code: raspberrypi/pico-examples (i2c/lcd_1602_i2c folder) and johnrickman/LiquidCrystal_I2C
-
 #include "i2c-display-lib.h"
+
+uint8_t lcd_Addr = 0x27;
+uint8_t lcd_numlines = 2;
+uint8_t lcd_cols = 16;
+uint8_t lcd_rows = 2;
+uint8_t lcd_backlightval = LCD_NOBACKLIGHT;
 
 void lcd_set_cols(uint8_t cols) { lcd_cols = cols; }
 void lcd_set_rows(uint8_t rows) { lcd_rows = rows; }
