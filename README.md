@@ -39,13 +39,9 @@ target_link_libraries(yourproject pico_stdlib i2c-display-lib)
 
 
 int main() {
-    lcd_set_cols(20);
-    lcd_set_rows(4);
-
     lcd_init();
-    lcd_backlight();
 
-    lcd_home();
+    lcd_home(); // or lcd_setCursor(0,0);
     lcd_print("Hello World!");
 }
 ```
