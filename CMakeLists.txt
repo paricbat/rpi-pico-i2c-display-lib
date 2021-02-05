@@ -1,2 +1,6 @@
+cmake_minimum_required(VERSION 3.12)
+include(pico_sdk_import.cmake)
 project(i2c-display-lib)
+pico_sdk_init()
 add_library(i2c-display-lib i2c-display-lib.c i2c-display-lib.h)
+target_link_libraries(i2c-display-lib pico_stdlib)
