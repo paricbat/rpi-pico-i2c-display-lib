@@ -93,7 +93,7 @@ void lcd_setCursor(int line, int position) {
     lcd_send_byte(val, LCD_COMMAND, 1);
 }
 
-void lcd_write(char val) {
+static void inline lcd_write(char val) {
     lcd_send_byte(val, LCD_CHARACTER, 1);
 }
 

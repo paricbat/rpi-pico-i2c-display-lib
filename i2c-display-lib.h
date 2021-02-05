@@ -10,7 +10,7 @@
 void i2c_write_byte(uint8_t val);
 void lcd_setAddr(int addr);
 void lcd_toggle_enable(uint8_t val);
-void lcd_send_byte(uint8_t val, int mode);
+void lcd_send_byte(uint8_t val, int mode, int backlight);
 void lcd_clear(void);
 void lcd_setCursor(int line, int position);
 static void inline lcd_write(char val);
