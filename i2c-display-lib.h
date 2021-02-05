@@ -82,7 +82,7 @@ void lcd_noAutoscroll();
 void lcd_createChar(uint8_t location, uint8_t charmap[]);
  
 void lcd_setCursor(uint8_t col, uint8_t row); 
-inline void lcd_write(uint8_t value);
+void lcd_write(uint8_t value);
 void lcd_command(uint8_t);
 void lcd_init();
 void lcd_oled_init();

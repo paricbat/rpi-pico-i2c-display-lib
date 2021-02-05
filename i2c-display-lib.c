@@ -34,7 +34,7 @@ void lcd_send(uint8_t value, uint8_t mode) {
 }
 
 
-inline void lcd_write(uint8_t value) {
+void lcd_write(uint8_t value) {
 	lcd_send(value, Rs);
 }
 
