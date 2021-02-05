@@ -62,11 +62,11 @@ void lcd_toggle_enable(uint8_t val) {
 }
 
 // The display is sent a byte as two separate nibble transfers
-void lcd_send_byte(uint8_t val, int mode) {
+void lcd_send_byte(uint8_t val, int mode, int backlight) {
 	uint8_t high;
 	uint8_t low;
 
-	if(mode != 1)
+	if(backlight)
 	{
 		high = mode | (val & 0xF0) | LCD_BACKLIGHT;
 		low = mode | ((val << 4) & 0xF0) | LCD_BACKLIGHT;
@@ -83,21 +83,21 @@ void lcd_send_byte(uint8_t val, int mode) {
 }
 
 void lcd_clear(void) {
-    lcd_send_byte(LCD_CLEARDISPLAY, LCD_COMMAND);
+    lcd_send_byte(LCD_CLEARDISPLAY, LCD_COMMAND, 1);
 }
 
 // go to location on LCD
 void lcd_setCursor(int line, int position) {
     int line_offsets[] = { 0x00, 0x40, 0x14, 0x54 };
     int val = 0x80 + line_offsets[line] + position;
-    lcd_send_byte(val, LCD_COMMAND);
+    lcd_send_byte(val, LCD_COMMAND, 1);
 }
 
-static void inline lcd_write(char val) {
-    lcd_send_byte(val, LCD_CHARACTER);
+void lcd_write(char val) {
+    lcd_send_byte(val, LCD_CHARACTER, 1);
 }
 
-void lcd_print(const char *s) {
+static void lcd_print(const char *s) {
     while (*s) {
         lcd_write(*s++);
     }
@@ -105,9 +105,9 @@ void lcd_print(const char *s) {
 
 void lcd_createChar(uint8_t location, uint8_t charmap[]) {
 	location &= 0x7; // we only have 8 locations 0-7
-	lcd_send_byte(LCD_SETCGRAMADDR | (location << 3), LCD_COMMAND);
+	lcd_send_byte(LCD_SETCGRAMADDR | (location << 3), LCD_COMMAND, 1);
 	for (int i=0; i<8; i++) {
-		lcd_send_byte(charmap[i], 1);
+		lcd_send_byte(charmap[i], 1, 0);
 	}
 }
 
@@ -123,13 +123,13 @@ void lcd_init(int sda, int scl) {
 	// Make the I2C pins available to picotool
     // bi_decl( bi_2pins_with_func(sda, scl, GPIO_FUNC_I2C)); For some reason this produces an error.
 
-    lcd_send_byte(0x03, LCD_COMMAND);
-    lcd_send_byte(0x03, LCD_COMMAND);
-    lcd_send_byte(0x03, LCD_COMMAND);
-    lcd_send_byte(0x02, LCD_COMMAND);
+    lcd_send_byte(0x03, LCD_COMMAND, 1);
+    lcd_send_byte(0x03, LCD_COMMAND, 1);
+    lcd_send_byte(0x03, LCD_COMMAND, 1);
+    lcd_send_byte(0x02, LCD_COMMAND, 1);
 
-    lcd_send_byte(LCD_ENTRYMODESET | LCD_ENTRYLEFT, LCD_COMMAND);
-    lcd_send_byte(LCD_FUNCTIONSET | LCD_2LINE, LCD_COMMAND);
-    lcd_send_byte(LCD_DISPLAYCONTROL | LCD_DISPLAYON, LCD_COMMAND);
+    lcd_send_byte(LCD_ENTRYMODESET | LCD_ENTRYLEFT, LCD_COMMAND, 1);
+    lcd_send_byte(LCD_FUNCTIONSET | LCD_2LINE, LCD_COMMAND, 1);
+    lcd_send_byte(LCD_DISPLAYCONTROL | LCD_DISPLAYON, LCD_COMMAND, 1);
     lcd_clear();
 }
