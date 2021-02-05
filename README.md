@@ -11,6 +11,6 @@ There are two ways:
 Here's a step-by-step guide:
 1. Create a folder `include`.
 1. Put both `i2c-display-lib.c` and `i2c-display-lib.h `into it.
-1. Add this line before add_executable in your CMakeLists.txt file: `file(GLOB-RECURSE INCLUDE include/*.h include/*.c)`
-1. Edit your add_executable command from: `add_executable(yourproj yourproj.c)` to: `add_executable(yourproj yourproj.c ${INCLUDE})`
+1. Add this line before the call of add_executable in your CMakeLists.txt file: `file(GLOB-RECURSE INCLUDE include/*.h include/*.c)`
+1. Edit your add_executable line from: `add_executable(yourproj yourproj.c)` to: `add_executable(yourproj yourproj.c ${INCLUDE})`
 1. Done!
