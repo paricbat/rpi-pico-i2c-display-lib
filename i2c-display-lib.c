@@ -80,7 +80,7 @@ void lcd_setCursor(uint8_t col, uint8_t row){
 	if ( row > lcd_numlines ) {
 		row = lcd_numlines-1;    // we count rows starting w/0
 	}
-	command(LCD_SETDDRAMADDR | (col + row_offsets[row]));
+	lcd_command(LCD_SETDDRAMADDR | (col + row_offsets[row]));
 }
 
 // Turns the underline cursor on/off
