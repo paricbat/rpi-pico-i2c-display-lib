@@ -53,4 +53,6 @@
 #define Rw 0x02  // Read/Write bit
 #define Rs 0x01  // Register select bit
 
+#define I2C_PORT i2c0
+
 #endif
