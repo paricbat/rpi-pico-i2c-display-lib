@@ -63,6 +63,9 @@ uint8_t lcd_backlightval = LCD_NOBACKLIGHT;
 
 #define I2C_PORT i2c0
 
+void lcd_set_cols(uint8_t cols) { lcd_cols = cols; }
+void lcd_set_rows(uint8_t cols) { lcd_cols = cols; }
+
 /* Quick helper function for single byte transfers */
 void lcd_expanderWrite(uint8_t val) {
     i2c_write_blocking(I2C_PORT, lcd_Addr, &val, 1, false);
