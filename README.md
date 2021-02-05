@@ -42,8 +42,8 @@ int main() {
     lcd_set_cols(20);
     lcd_set_rows(4);
 
-    lcd_backlight();
     lcd_init();
+    lcd_backlight();
 
     lcd_home();
     lcd_print("Hello World!");
