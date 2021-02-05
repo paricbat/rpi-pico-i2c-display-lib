@@ -1,3 +1,5 @@
+#ifndef I2CDISPLAY_H
+#define I2CDISPLAY_H
 // commands
 const int LCD_CLEARDISPLAY = 0x01;
 const int LCD_RETURNHOME = 0x02;
@@ -49,3 +51,5 @@ void lcd_createChar(uint8_t location, uint8_t charmap[]);
 void lcd_init(int sda, int scl);
 
 void lcd_home();
+
+#endif
