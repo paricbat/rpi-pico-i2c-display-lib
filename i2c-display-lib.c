@@ -112,6 +112,15 @@ void lcd_noDisplay() {
 }
 
 /********** high level commands, for the user! */
+void lcd_print(const char *text)
+{
+	while(*text)
+	{
+		lcd_write(*text);
+		++text;
+	}
+}
+
 void lcd_display() {
 	lcd_displaycontrol |= LCD_DISPLAYON;
 	lcd_command(LCD_DISPLAYCONTROL | lcd_displaycontrol);
