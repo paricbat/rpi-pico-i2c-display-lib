@@ -1,6 +1,6 @@
 # rpi-pico-i2c-display-lib
 A C Library for using I2C LCD displays on Raspberry Pi Pico. Essentialy a port of LiquidCrystal_I2C to RPi Pico.\
-Based mostly on [LiquidCrystal_I2C](https://github.com/johnrickman/LiquidCrystal_I2C) (Arduino Library) and [rpi-pico-20x4-lcd-i2c-example](https://github.com/ParicBat/rpi-pico-20x4-lcd-i2c-example).
+Based mostly on [rpi-pico-20x4-lcd-i2c-example](https://github.com/ParicBat/rpi-pico-20x4-lcd-i2c-example) and [LiquidCrystal_I2C](https://github.com/johnrickman/LiquidCrystal_I2C) (Arduino Library).
 
 # How to use?
 There are two ways:
