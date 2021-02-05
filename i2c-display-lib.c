@@ -66,7 +66,7 @@ static void inline lcd_write(char val) {
 
 void lcd_print(const char *s) {
     while (*s) {
-        lcd_char(*s++);
+        lcd_write(*s++);
     }
 }
 
