@@ -68,12 +68,12 @@ void lcd_send_byte(uint8_t val, int mode) {
 
 	if(mode != 1)
 	{
-		uint8_t high = mode | (val & 0xF0) | LCD_BACKLIGHT;
-		uint8_t low = mode | ((val << 4) & 0xF0) | LCD_BACKLIGHT;
+		high = mode | (val & 0xF0) | LCD_BACKLIGHT;
+		low = mode | ((val << 4) & 0xF0) | LCD_BACKLIGHT;
 	}
 	else {
-		uint8_t high = mode | (val & 0xF0);
-		uint8_t low = mode | ((val << 4) & 0xF0);
+		high = mode | (val & 0xF0);
+		low = mode | ((val << 4) & 0xF0);
 	}
 
     i2c_write_byte(high);
