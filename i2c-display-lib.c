@@ -158,7 +158,7 @@ void lcd_noBacklight(void) {
 
 void lcd_backlight(void) {
 	lcd_backlightval=LCD_BACKLIGHT;
-	lcd_expanderWrite(0);
+	lcd_expanderWrite(1);
 }
 
 // Alias functions
