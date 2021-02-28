@@ -4,7 +4,7 @@ Based mostly on [rpi-pico-20x4-lcd-i2c-example](https://github.com/ParicBat/rpi-
 
 # How to use?
 There are two ways:
-1. Copy the source code to your main c file.
+1. Copy the source code to your main C file.
 1. Linking the files (`i2c-display-lib.c` and `i2c-display-lib.h`) to your CMakeLists.txt file.
 
 ## Linking the files to CMakeLists.txt
