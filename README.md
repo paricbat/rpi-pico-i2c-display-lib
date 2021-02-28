@@ -8,6 +8,9 @@ There are two ways:
 1. Linking the files (`i2c-display-lib.c` and `i2c-display-lib.h`) to your CMakeLists.txt file.
 
 ## Linking the files to CMakeLists.txt
+
+**Warning: There's a better way of  doing this by adding the `i2c-display-lib.c` file to the add_executeable command and add an `target_include_directories` command pointing to the folder where `i2c-display-lib.c` is.**
+
 Here's a step-by-step guide:
 1. Create a folder `rpi-pico-i2c-display-lib` in the folder where your CMakeLists is located.
 1. Put both `i2c-display-lib.c` and `i2c-display-lib.h `into it.
