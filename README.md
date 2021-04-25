@@ -5,18 +5,13 @@ Based mostly on [rpi-pico-20x4-lcd-i2c-example](https://github.com/ParicBat/rpi-
 # How to use?
 There are two ways:
 1. Copy the source code to your main C file.
-1. Linking the files (`i2c-display-lib.c` and `i2c-display-lib.h`) to your CMakeLists.txt file.
+1. Add the file `i2c-display-lib.h` to your CMakeLists.txt file.
 
-## Linking the files to CMakeLists.txt
-
-**Warning: There's a better way of  doing this by adding the `i2c-display-lib.c` file to the add_executeable command and add an `target_include_directories` command pointing to the folder where `i2c-display-lib.c` is.**
+## Adding the file to CMakeLists.txt
 
 Here's a step-by-step guide:
-1. Create a folder `rpi-pico-i2c-display-lib` in the folder where your CMakeLists is located.
-1. Put both `i2c-display-lib.c` and `i2c-display-lib.h `into it.
-1. Add this line right after the call of `add_executable` in your CMakeLists.txt file: `add_library(i2c-display-lib rpi-pico-i2c-display-lib/i2c-display-lib.c)`
-1. Add this line right before the call of `target_link_libraries` for your main project: `target_link_libraries(i2c-display-lib pico_stdlib hardware_i2c)`
-1. Modify your `target_link_libraries` call for your main project from this: `target_link_libraries(yourproject pico_stdlib)` to this: `target_link_libraries(yourproject pico_stdlib i2c-display-lib)`
+1. Move the `i2c-display-lib.h` file to your include folder (create one if you don't have one).
+1. Include the include folder like this: `target_include_directories(yourproject PUBLIC ./include)`.
 1. Done!
 
 CMakeLists.txt should look like this now:
@@ -28,12 +23,11 @@ project(yourproject)
 pico_sdk_init()
 
 add_executable(yourproject yourproject.c)
-add_library(i2c-display-lib rpi-pico-i2c-display-lib/i2c-display-lib.c)
+target_include_directories(yourproject PUBLIC ./include)
 
-pico_add_extra_outputs(yourprojects)
+pico_add_extra_outputs(yourproject)
 
-target_link_libraries(i2c-display-lib pico_stdlib hardware_i2c)
-target_link_libraries(yourproject pico_stdlib i2c-display-lib)
+target_link_libraries(yourproject pico_stdlib hardware_i2c)
 ```
 # An Example
 ```
@@ -42,7 +36,7 @@ target_link_libraries(yourproject pico_stdlib i2c-display-lib)
 
 
 int main() {
-    lcd_init();
+    lcd_init(6, 7); // sda and scl
 
     lcd_home(); // or lcd_setCursor(0,0);
     lcd_print("Hello World!");
