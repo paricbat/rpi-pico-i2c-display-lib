@@ -32,7 +32,7 @@ target_link_libraries(yourproject pico_stdlib hardware_i2c)
 # An Example
 ```
 #include "pico/stdlib.h"
-#include "i2c-display-lib/i2c-display-lib.h"
+#include "i2c-display-lib.h"
 
 
 int main() {
