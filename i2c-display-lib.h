@@ -57,8 +57,6 @@ static int lcd_addr = 0x27;
 // Functions
 //
 
-void lcd_home();
-
 /* Quick helper function for single byte transfers */
 void i2c_write_byte(uint8_t val) {
     i2c_write_blocking(I2C_PORT, lcd_addr, &val, 1, false);
